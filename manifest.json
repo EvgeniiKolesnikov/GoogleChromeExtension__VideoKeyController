@@ -1,0 +1,35 @@
+{
+	"manifest_version": 2,
+	"name": "Video Keys Control for \"learn.dataart.com\"",
+	"version": "1.4",
+	"options_page": "options.html",
+	"content_scripts": [
+		{
+			"matches": [
+				"https://learn.dataart.com/*"
+				],
+				"js":["inject.js"],
+				"css":["inject.css", "widget.css", "options.css", "popup.css"],
+				"all_frames": true
+		}
+	],
+	"icons": {
+		"256": "logo/256.png",
+		"128": "logo/128.png",
+		"64": "logo/64.png",
+		"48": "logo/48.png",
+		"32": "logo/32.png",
+		"16": "logo/16.png"
+},
+	"permissions":
+	[
+			"storage"
+	],
+	"author": "Evgenii",
+	"short_name": "Control Keys",
+	"description": "Плагин добавляет возможность управления видео с клавиатуры для сайта \"learn.dataart.com\"",
+	"browser_action": {
+          "default_title": "Video control keys",      
+          "default_popup": "popup.html"     
+    }
+}	

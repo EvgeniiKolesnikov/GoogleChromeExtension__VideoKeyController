@@ -1,0 +1,55 @@
+body {
+    font-family: "LocalRoboto","Helvetica Neue","Helvetica","sans-serif";
+    font-size: 80%;
+    color: #000;
+    margin: auto;
+    padding: auto;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#action {
+    display: block;
+    flex-direction: row;
+    font-size: 14px;
+    background: #f5f5f5;
+    color: #353d4a;
+    width: 110px;
+    height: 25px;
+}
+#action:hover {
+    color: rgb(24,24,24);
+    background: rgb(253, 215, 130);
+	-webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    box-sizing: border-box;
+}
+#action:hover img {
+    transform: rotate(360deg);
+	-webkit-transition: .8s ease-in-out;
+    -moz-transition: .8s ease-in-out;
+    transition: .8s ease-in-out;
+    box-sizing: border-box;
+}
+
+a.button {
+    font-family: verdana;
+    color: rgb(64, 51, 1);
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 5px;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+IMG {
+	margin-right: 5px;
+}

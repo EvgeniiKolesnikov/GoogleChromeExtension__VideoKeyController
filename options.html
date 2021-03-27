@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Настройки Video Keys Controller </title>
+	<link rel="stylesheet" href="./options.css">
+	<link rel="stylesheet" href="./widget.css">
+</head>
+
+<body>
+	<header class="header">
+		<img class="imgOptions" src="./pics/options1.png">
+		<span class="text1"> Настройки </span>
+	</header>
+	<section class="spacer"></section>
+	<main class="mainContainer">
+
+		<div id="slick-login">
+			<div class="aboutSettings">
+				<p class="aboutSettings-text" title="а не только на самом видео">А может управлять видео с клавиатуры, когда активный фокус в
+					любом месте браузера?</p>
+			</div>
+			<div class="buttonSettings">
+				<button class="buttonSettings-check">
+					<img id="buttonSettings-check-pic" src="./pics/checkOn.png" />
+					<span> Global focus </span>
+				</button>
+			</div>
+			<div class="moveSettings">
+				<p class="moveSettings-text">Шаг перемотки видео (сек):</p>
+				<select id="timeSelect" class="buttonSelect">
+					<option value="1">1</option>
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="15">15</option>
+					<option value="20">20</option>
+					<option value="25">25</option>
+					<option value="30">30</option>
+					<option value="40">40</option>
+					<option value="50">50</option>
+					<option value="60">60</option>
+				</select>
+			</div>
+			<div class="moveSettings">
+				<p class="moveSettings-text">Шаг перемотки громкости (%):</p>
+				<select id="volumeSelect" class="buttonSelect">
+					<option value="1">1</option>
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="15">15</option>
+					<option value="20">20</option>
+					<option value="25">25</option>
+				</select>
+			</div>
+
+			<div class="infoSettings">
+				<img id="infoSettings-pic" src="./pics/info.jpg" />
+			</div>
+		</div>
+
+		<section class="content">
+			<div class="picSection">
+				<img class="pics" src="./pics/pic1.jpg" />
+			</div>
+			<div class="picSection">
+				<img class="pics" src="./pics/mobile2.png" />
+			</div>
+			<div class="picSection">
+				<img class="pics" src="./pics/pic2.jpg" />
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="footer">
+		<div class="footer__container">Расширение для управления видео с клавиатуры для learn.dataart.com
+		</div>
+	</footer>
+	<div class="widgetStas">
+		<img src="./pics/s3.png" />
+	</div>
+	<script src="./options.js"></script>
+</body>
+
+</html>
