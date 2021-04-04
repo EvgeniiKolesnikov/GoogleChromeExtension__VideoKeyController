@@ -206,9 +206,12 @@ function switchFullscreen() {
 
 function switchSliderTime(keyCode) {
 	//console.log('press Arrow Left/Right for switch Time');
+	let offsetTime = 0;
+	if (sliderTimeHandle === document.activeElement) { 
+		offsetTime = 1;
+	}
 	sliderTimeHandle.focus();
-	simulateKeyRepeatPresses(sliderTimeHandle, keyCode, stepTime);
-	//targetFocus.focus();
+	simulateKeyRepeatPresses(sliderTimeHandle, keyCode, stepTime-offsetTime);
 }
 function simulateKeyRepeatPresses(element, keyCode, loops) {
 	for (let i=1; i<=loops; i++){
@@ -218,16 +221,22 @@ function simulateKeyRepeatPresses(element, keyCode, loops) {
 }
 
 function switchSliderVolume(keyCode) {
-	buttonV.addEventListener('mouseover', function(){});
 	buttonV.dispatchEvent(new MouseEvent("mouseover",{}));
-  sliderVolume.focus();
+	if (sliderTimeHandle === document.activeElement) {
+		// reverse slider timer
+		// console.log('Slider in Focus'); 
+		if (keyCode == '38') {
+			simulateKeyRepeatPresses(sliderTimeHandle, 37, 1);
+		}
+		if (keyCode == '40') {
+			simulateKeyRepeatPresses(sliderTimeHandle, 39, 1);
+		}
+	}
 	simulateKeyRepeatPresses(sliderVolume, keyCode, stepVolume);
 	clearTimeout(timerVolume);
 	timerVolume = setTimeout(sliderVolumeHide, ms);
 }
 
 function sliderVolumeHide() {
-	buttonV.addEventListener("mouseout", function(){});
 	buttonV.dispatchEvent(new MouseEvent("mouseout",{}));
-	targetFocus.focus();
 }
