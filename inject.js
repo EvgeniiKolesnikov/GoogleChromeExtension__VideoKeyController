@@ -29,6 +29,10 @@ let sliderVolume;
 
 let buttonV;
 
+let videoPlayer;
+let videoUrl;
+let videoUrlPlace;
+
 //timer
 let stepVolume = 5;
 let timerVolume = null;
@@ -99,6 +103,7 @@ function loadVideoController () {
   //console.log('=============');
 	loadElements(); 
 	loadEvents();
+	addElementVideoSave(videoUrl);
 	window.addEventListener('keydown', keyController, false)
 }
 
@@ -123,15 +128,41 @@ function loadElements() {
 	buttonSpeed3 = 			getE("control speed-option")[2];
 	buttonSpeed4 = 			getE("control speed-option")[3];
 
-	button1Video = 			getE("seq_video")[0];
-	button2Video =			getE("seq_video")[2];
+	button1Video = 			getE("seq_video nav-item")[0];
+	button2Video = 			getE("seq_video nav-item")[1];
+	buttonProblem = 		getE("seq_problem")[0];
 
+	buttonNav1 = 				getE("sequence-nav-button")[0];
+	buttonNav2 = 				getE("sequence-nav-button")[1];
+	buttonNav3 = 				getE("sequence-nav-button")[2];
+	buttonNav4 = 				getE("sequence-nav-button")[3];
 	buttonV = 					getE("volume")[0];
 	sliderVolume = 			getE('ui-slider-handle volume-handle')[0];
 
 	sliderTimeHandle =	getE('ui-slider-handle progress-handle')[0];
 	sliderTimeRange = 	getE('ui-slider-range ui-widget-header')[0];
 	targetFocus = 			getE("video closed is-initialized")[0];
+
+	videoUrlPlace = 		getE("video-wrapper")[0];
+	videoPlayer = 			getE("video-player")[0];
+	videoUrl = (videoPlayer.childNodes[1].childNodes[0].childNodes[0].src);
+}
+
+function addElementVideoSave(file) {
+	if (document.querySelector(".videoUrl")) return;
+
+	let a = document.createElement("a");
+	a.className = 'videoUrl';
+	a.href = file;
+	a.download = '';
+	videoUrlPlace.appendChild(a);
+	a.target = "_blank"
+	a.textContent = 'Ссылка на видео';
+
+	let info = document.createElement("div");
+	info.style.fontSize = '12px';
+	info.innerHTML = `Скачать видео можно так: <br/> • перейти по ней и там выбрать "... Скачать" <br/> • нажать ПКМ по ссылке и выбрать "Сохранить ссылку как..."`;
+	videoUrlPlace.appendChild(info);
 }
 
 function loadEvents() {
@@ -142,10 +173,23 @@ function loadEvents() {
 	buttonSpeed2.addEventListener("mouseout", refocusOnTarget, false);
 	buttonSpeed3.addEventListener("mouseout", refocusOnTarget, false);
 	buttonSpeed4.addEventListener("mouseout", refocusOnTarget, false);
+
 	if (button1Video != undefined) 
 		button1Video.addEventListener("click", reloadElements, false);
 	if (button2Video != undefined) 
 		button2Video.addEventListener("click", reloadElements, false);
+	
+	if (buttonProblem != undefined)
+		buttonProblem.addEventListener("click", reloadElements, false);
+	
+	if (buttonNav1 != undefined)
+		buttonNav1.addEventListener("click", reloadElements, false);
+	if (buttonNav2 != undefined)
+		buttonNav2.addEventListener("click", reloadElements, false);
+	if (buttonNav3 != undefined)
+		buttonNav3.addEventListener("click", reloadElements, false);
+	if (buttonNav4 != undefined)
+		buttonNav4.addEventListener("click", reloadElements, false);
 }
 
 function refocusOnTarget() {
@@ -154,7 +198,8 @@ function refocusOnTarget() {
 }
 
 function reloadElements() {
-	//console.log("click button 1 or 2 isLoadedContent = false");
+	// console.clear();
+	// console.log("click button Up or Bottom isLoadedContent = false");
 	isLoadedContent = false;
 }
 
