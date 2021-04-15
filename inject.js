@@ -20,8 +20,13 @@ let buttonSpeed2;
 let buttonSpeed3;
 let buttonSpeed4;
 
-let button1Video;
-let button2Video;
+let buttonVideo1;
+let buttonVideo2;
+
+let buttonNav1;
+let buttonNav2;
+let buttonNav3;
+let buttonNav4;
 
 let sliderTimeHandle;
 let sliderTimeRange;
@@ -128,8 +133,8 @@ function loadElements() {
 	buttonSpeed3 = 			getE("control speed-option")[2];
 	buttonSpeed4 = 			getE("control speed-option")[3];
 
-	button1Video = 			getE("seq_video nav-item")[0];
-	button2Video = 			getE("seq_video nav-item")[1];
+	buttonVideo1 = 			getE("seq_video nav-item")[0];
+	buttonVideo2 = 			getE("seq_video nav-item")[1];
 	buttonProblem = 		getE("seq_problem")[0];
 
 	buttonNav1 = 				getE("sequence-nav-button")[0];
@@ -140,7 +145,6 @@ function loadElements() {
 	sliderVolume = 			getE('ui-slider-handle volume-handle')[0];
 
 	sliderTimeHandle =	getE('ui-slider-handle progress-handle')[0];
-	sliderTimeRange = 	getE('ui-slider-range ui-widget-header')[0];
 	targetFocus = 			getE("video closed is-initialized")[0];
 
 	videoUrlPlace = 		getE("video-wrapper")[0];
@@ -166,30 +170,18 @@ function addElementVideoSave(file) {
 }
 
 function loadEvents() {
-	sliderTimeHandle.addEventListener("click", refocusOnTarget, false);
-	sliderTimeRange.addEventListener("click", refocusOnTarget, false);
-	sliderVolume.addEventListener("mouseout", refocusOnTarget, false);
-	buttonSpeed1.addEventListener("mouseout", refocusOnTarget, false);
-	buttonSpeed2.addEventListener("mouseout", refocusOnTarget, false);
-	buttonSpeed3.addEventListener("mouseout", refocusOnTarget, false);
-	buttonSpeed4.addEventListener("mouseout", refocusOnTarget, false);
+	[sliderVolume, buttonSpeed1, buttonSpeed2, buttonSpeed3, buttonSpeed4]
+	.forEach(item => {
+		item.addEventListener("mouseout", refocusOnTarget, false);
+	});
 
-	if (button1Video != undefined) 
-		button1Video.addEventListener("click", reloadElements, false);
-	if (button2Video != undefined) 
-		button2Video.addEventListener("click", reloadElements, false);
-	
-	if (buttonProblem != undefined)
-		buttonProblem.addEventListener("click", reloadElements, false);
-	
-	if (buttonNav1 != undefined)
-		buttonNav1.addEventListener("click", reloadElements, false);
-	if (buttonNav2 != undefined)
-		buttonNav2.addEventListener("click", reloadElements, false);
-	if (buttonNav3 != undefined)
-		buttonNav3.addEventListener("click", reloadElements, false);
-	if (buttonNav4 != undefined)
-		buttonNav4.addEventListener("click", reloadElements, false);
+	[buttonVideo1, buttonVideo2, buttonProblem,
+		buttonNav1, buttonNav2, buttonNav3, buttonNav4]
+	.forEach(item => {
+		if (item != undefined) {
+			item.addEventListener("click", reloadElements);
+		}
+	});
 }
 
 function refocusOnTarget() {
